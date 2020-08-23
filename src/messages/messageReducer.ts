@@ -1,32 +1,32 @@
 // Data definitions
-export interface Message {
-  id: Number;
-  text: String;
+export interface IMessage {
+  id: number;
+  text: string;
   visibility: "public" | "private";
   meta: {
     createdAt: Date;
     updatedAt?: Date;
-    createdBy: User;
+    createdBy: IUser;
   };
 }
 
-export interface User {
-  id: Number;
-  name: String;
-  picture: String;
+export interface IUser {
+  id: number;
+  name: string;
+  picture: string;
 }
 
 // Reducer definitions
-export interface MessageState { // Should not be exported (caused by typeof any of reducer)
+export interface IMessageState { // Should not be exported (caused by typeof any of reducer)
   status: "fetching" | "ready" | "error";
   error?: String;
-  messages: Message[];
+  messages: IMessage[];
 }
 
 type Fetch = { type: "fetch" };
-type FetchSuccess = { type: "fetch success"; payload: Message[] };
+type FetchSuccess = { type: "fetch success"; payload: IMessage[] };
 type FetchError = { type: "fetch error"; payload: String };
-type AddMessage = { type: "add message"; payload: Message };
+type AddMessage = { type: "add message"; payload: IMessage };
 type MessageAction = Fetch | FetchError | FetchSuccess | AddMessage;
 
 // Reducer
@@ -35,7 +35,7 @@ export const initialState = {
   messages: [],
 };
 
-export function messageReducer(state: MessageState, action: MessageAction): any {
+export function messageReducer(state: IMessageState, action: MessageAction): any {
   // type of return should be MessageState
   switch (action.type) {
     case "fetch":

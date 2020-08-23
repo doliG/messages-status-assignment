@@ -1,25 +1,25 @@
-import { User, Message } from "./messages/messageReducer";
+import { IUser, IMessage } from "./messages/messageReducer";
 
-const currentUser: User = {
+const currentUser: IUser = {
   id: 0,
   name: "You",
   picture: "https://miro.medium.com/max/4096/1*wiOSfPd2sY0gXSNK9vv6bg.jpeg",
 };
 
-const john: User = {
+const john: IUser = {
   id: 1,
   name: "John Nace",
   picture: "https://www.voxcatch.fr/wp-content/uploads/2018/12/john-cena-1.jpg",
 };
 
-const donny: User = {
+const donny: IUser = {
   id: 2,
   name: "Donny Prumt",
   picture:
     "https://www.cdiscount.com/pdt2/1/9/2/1/700x700/auc2009705470192/rw/donald-trump-face-costume-mask-party-masquerade-ha.jpg",
 };
 
-export const mockMessages: Message[] = [
+export const mockMessages: IMessage[] = [
   {
     id: 0,
     text: "I love reducers",
@@ -39,7 +39,7 @@ export const mockMessages: Message[] = [
     },
   },
   {
-    id: 1,
+    id: 2,
     text: "What is COVID anyway ?",
     visibility: "public",
     meta: {
@@ -49,8 +49,8 @@ export const mockMessages: Message[] = [
   },
 ];
 
-export const mockMessage: Message = {
-  id: 0,
+export const mockMessage: IMessage = {
+  id: 3,
   text: "I am the first and new message, boom",
   visibility: "public",
   meta: {
