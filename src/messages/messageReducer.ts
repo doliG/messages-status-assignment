@@ -19,23 +19,23 @@ export interface IUser {
 // Reducer definitions
 export interface IMessageState { // Should not be exported (caused by typeof any of reducer)
   status: "fetching" | "ready" | "error";
-  error?: String;
+  error?: string;
   messages: IMessage[];
 }
 
 type Fetch = { type: "fetch" };
 type FetchSuccess = { type: "fetch success"; payload: IMessage[] };
-type FetchError = { type: "fetch error"; payload: String };
+type FetchError = { type: "fetch error"; payload: string };
 type AddMessage = { type: "add message"; payload: IMessage };
 type MessageAction = Fetch | FetchError | FetchSuccess | AddMessage;
 
 // Reducer
-export const initialState = {
+export const initialState: IMessageState = {
   status: "ready",
   messages: [],
 };
 
-export function messageReducer(state: IMessageState, action: MessageAction): any {
+export function messageReducer(state: IMessageState, action: MessageAction): IMessageState {
   // type of return should be MessageState
   switch (action.type) {
     case "fetch":

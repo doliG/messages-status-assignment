@@ -1,14 +1,11 @@
 import React, { useReducer, useEffect } from "react";
-import { IMessageState, messageReducer, initialState } from "../messageReducer";
+import { messageReducer, initialState } from "../messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
 import { MessageInput } from "../components/MessageInput";
 
 export function Messages() {
-  const [state, dispatch]: [IMessageState, Function] = useReducer(
-    messageReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messageReducer, initialState);
   const { messages, status, error } = state;
   useEffect(() => {
     dispatch({ type: "fetch" });
