@@ -18,7 +18,7 @@ export interface IUser {
 }
 
 // Reducer definitions
-export interface IMessageState { // Should not be exported (caused by typeof any of reducer)
+export interface IMessageState {
   status: "fetching" | "ready" | "error";
   error?: string;
   messages: IMessage[];
@@ -37,7 +37,6 @@ export const initialState: IMessageState = {
 };
 
 export function messageReducer(state: IMessageState, action: MessageAction): IMessageState {
-  // type of return should be MessageState
   switch (action.type) {
     case "fetch":
       console.log("Action: fetch");
