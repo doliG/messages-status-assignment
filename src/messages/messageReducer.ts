@@ -2,13 +2,14 @@
 export interface IMessage {
   id: number;
   text: string;
-  visibility: "public" | "private";
+  visibility: Visibility
   meta: {
     createdAt: Date;
     updatedAt?: Date;
     createdBy: IUser;
   };
 }
+export type Visibility = "public" | "private";
 
 export interface IUser {
   id: number;

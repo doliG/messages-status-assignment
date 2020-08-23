@@ -6,8 +6,10 @@ interface Props {
 }
 export function Message(props: Props) {
   const { message } = props;
-  const { text } = message;
+  const { text, visibility } = message;
   const { picture, name } = message.meta.createdBy;
+  const emoji = visibility === "public" ? "🌍" : "🔒";
+
   return (
     <div className="bg-white rounded-lg shadow p-6 flex">
       <img
@@ -16,7 +18,10 @@ export function Message(props: Props) {
         alt={name}
       />
       <div className="text-center md:text-left">
-        <p className="text-gray-600">{name}</p>
+        <p className="text-gray-600">
+          {name}
+          <span aria-label={visibility}> {emoji}</span>
+        </p>
         <p className="text-lg">{text}</p>
       </div>
     </div>

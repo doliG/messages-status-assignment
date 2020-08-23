@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { messageReducer, initialState } from "../messageReducer";
+import { messageReducer, initialState, Visibility } from "../messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
 import { MessageInput } from "../components/MessageInput";
@@ -16,13 +16,10 @@ export function Messages() {
     );
     return () => clearTimeout(timer);
   }, []);
-  useEffect(() => {
-    const timer = setTimeout(
-      (_) => dispatch({ type: "add message", payload: mockMessage }),
-      2000
-    );
-    return () => clearTimeout(timer);
-  }, []);
+
+  const addMessage = (text: string, visibility: Visibility) => {
+    dispatch({ type: 'add message', payload: { ...mockMessage, text, visibility }})
+  }
 
   return (
     <div className="mx-auto max-w-md">
@@ -37,7 +34,7 @@ export function Messages() {
       </p>
       <h1 className="text-4xl text-orange-600">Messages</h1>
       <div className="m-2 max-w-md">
-        <MessageInput />
+        <MessageInput submit={addMessage} />
       </div>
       {status === "fetching" && <p>Please wait...</p>}
       {status === "ready" &&
