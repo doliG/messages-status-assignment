@@ -2,6 +2,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Demo hosted here http://messages-status-assignment.surge.sh/
 
+## Table of Contents
+
+- [Quickstart](#quickstart)
+- [Available scripts](#available-scripts)
+- [Codebase](#codebase)
+  * [File organisation](#file-organisation)
+  * [Contributing](#contributing)
+  * [Testing](#testing)
+  * [Styling](#styling)
+  * [CI/CD](#ci-cd)
+- [Learn More](#learn-more)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## Quickstart
 
 ```bash
