@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { MessageInput } from "./MessageInput";
-import { Visibility } from "../messageReducer";
+import { Visibility } from "../reducer/messageReducer";
 
 it("display a textarea", () => {
   const { getByPlaceholderText } = render(<MessageInput submit={() => 0} />);

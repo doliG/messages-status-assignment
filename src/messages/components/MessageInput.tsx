@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Visibility } from "../messageReducer";
+import { Visibility } from "../reducer/messageReducer";
 
 type Props = {
   submit: Function;

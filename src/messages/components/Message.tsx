@@ -1,5 +1,5 @@
 import React from "react";
-import { IMessage } from "../messageReducer";
+import { IMessage } from "../reducer/messageReducer";
 
 interface Props {
   message: IMessage;

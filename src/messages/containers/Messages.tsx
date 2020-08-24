@@ -1,5 +1,9 @@
 import React, { useReducer, useEffect } from "react";
-import { messageReducer, initialState, Visibility } from "../messageReducer";
+import {
+  messageReducer,
+  initialState,
+  Visibility,
+} from "../reducer/messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
 import { MessageInput } from "../components/MessageInput";

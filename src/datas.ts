@@ -1,4 +1,4 @@
-import { IUser, IMessage } from "./messages/messageReducer";
+import { IUser, IMessage } from "./messages/reducer/messageReducer";
 
 const currentUser: IUser = {
   id: 0,
