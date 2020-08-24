@@ -18,8 +18,11 @@ export function Messages() {
   }, []);
 
   const addMessage = (text: string, visibility: Visibility) => {
-    dispatch({ type: 'add message', payload: { ...mockMessage, text, visibility }})
-  }
+    dispatch({
+      type: "add message",
+      payload: { ...mockMessage, text, visibility },
+    });
+  };
 
   return (
     <div className="mx-auto max-w-md">

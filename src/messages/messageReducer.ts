@@ -2,7 +2,7 @@
 export interface IMessage {
   id: number;
   text: string;
-  visibility: Visibility
+  visibility: Visibility;
   meta: {
     createdAt: Date;
     updatedAt?: Date;
@@ -36,7 +36,10 @@ export const initialState: IMessageState = {
   messages: [],
 };
 
-export function messageReducer(state: IMessageState, action: MessageAction): IMessageState {
+export function messageReducer(
+  state: IMessageState,
+  action: MessageAction
+): IMessageState {
   switch (action.type) {
     case "fetch":
       console.log("Action: fetch");
