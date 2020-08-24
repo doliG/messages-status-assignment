@@ -20,7 +20,7 @@ export function Message(props: Props) {
       <div className="text-center md:text-left">
         <p className="text-gray-600">
           {name}
-          <span aria-label={visibility}> {emoji}</span>
+          <span aria-label={visibility} title={visibility}> {emoji}</span>
         </p>
         <p className="text-lg">{text}</p>
       </div>
