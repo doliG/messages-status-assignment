@@ -11,7 +11,7 @@ Demo hosted here http://messages-status-assignment.surge.sh/
   * [Contributing](#contributing)
   * [Testing](#testing)
   * [Styling](#styling)
-  * [CI/CD](#ci-cd)
+  * [CI CD](#ci-cd)
 - [Learn More](#learn-more)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -19,16 +19,16 @@ Demo hosted here http://messages-status-assignment.surge.sh/
 ## Quickstart
 
 ```bash
-git clone git@github.com:doliG/messages-status-assignment.git
+git clone https://github.com/doliG/messages-status-assignment.git
 yarn # Install deps
 yarn start # Start dev server
 ```
 
-If you don't have yarn, you use npm.
+If you don't have yarn, you can use npm.
 
 ```bash
-git clone git@github.com:doliG/messages-status-assignment.git
-npm # Install deps
+git clone https://github.com/doliG/messages-status-assignment.git
+npm ci # Install deps
 npm start # Start dev server
 ```
 
@@ -58,16 +58,17 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 - `yarn deploy`
+
 Builds the app, then deploy it.
 
 ## Codebase
 
 ### File organisation
 
-We group files by funcitonnality, then by type.
+We group files by features, then by type.
 
 ```bash
-src/messages
+src/messages # Functionnality relative to messages
 ├── components/ # Contains presentational components with almost no logic
 ├── containers/ # Contains wrapper with logic
 └── reducer/    # Store logic
@@ -80,13 +81,14 @@ More information:
 
 ### Contributing
 
-We use a simple flow with git. It assumes you are familiar with branch. Each merge request goes directly to master, and each merge into master will trigger a production deployment.
+We use a simple flow with git. It assumes you are familiar with branches. Each merge request goes directly to master.
+<!-- (and each merge into master will trigger a production deployment). -->
 
 Steps:
 - Create a new branch
-- Develop...
-- Please rebase your changes into one commit if possible
-- Create a pull request
+- Write code, commit, push
+- [Rebase your changes in one commit](https://www.internalpointers.com/post/squash-commits-into-one-git) (if possible)
+- Create a pull request from your branch on master
 
 ### Testing
 
@@ -99,11 +101,11 @@ More informations:
 
 ### Styling
 
-We use tailwind - a css based framework, to style our component. It's very easy to use, and feel like a breeze once you are familiar with their class syntax.
+We use tailwind - a css based framework, to style our components. It's very easy to use, and feel like a breeze once you are familiar with their class syntax.
 
 More information: https://tailwindcss.com/
 
-### CI/CD
+### CI CD
 
 To implement, you can do it if you want. Goal: on commit/merge test, on merge master deploy.
 
