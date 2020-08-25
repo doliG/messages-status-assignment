@@ -3,6 +3,9 @@ import {
   messageReducer,
   initialState,
   Visibility,
+  fetch,
+  fetchSuccess,
+  addMessage,
 } from "../reducer/messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
@@ -12,21 +15,18 @@ export function Messages() {
   const [state, dispatch] = useReducer(messageReducer, initialState);
   const { messages, status, error } = state;
   useEffect(() => {
-    dispatch({ type: "fetch" });
+    dispatch(fetch());
     // This timeout should be replaced by API Call / fetcher func
     const timer = setTimeout(
-      (_) => dispatch({ type: "fetch success", payload: mockMessages }),
+      (_) => dispatch(fetchSuccess(mockMessages)),
       500
     );
     return () => clearTimeout(timer);
   }, []);
 
-  const addMessage = (text: string, visibility: Visibility) => {
+  const submitMessage = (text: string, visibility: Visibility) => {
     const id = Math.floor(Math.random() * 100000);
-    dispatch({
-      type: "add message",
-      payload: { ...mockMessage, id, text, visibility },
-    });
+    dispatch(addMessage({ ...mockMessage, id, text, visibility }));
   };
 
   return (
@@ -42,7 +42,7 @@ export function Messages() {
       </p>
       <h1 className="text-4xl text-orange-600">Messages</h1>
       <div className="m-2 max-w-md">
-        <StatusForm submit={addMessage} />
+        <StatusForm submit={submitMessage} />
       </div>
       {status === "fetching" && <p>Please wait...</p>}
       {status === "ready" &&

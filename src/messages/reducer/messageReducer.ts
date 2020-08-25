@@ -30,6 +30,13 @@ type FetchError = { type: "fetch error"; payload: string };
 type AddMessage = { type: "add message"; payload: IMessage };
 type MessageAction = Fetch | FetchError | FetchSuccess | AddMessage;
 
+// Actions creators
+export const fetch = (): Fetch => ({ type: "fetch"});
+export const fetchSuccess = (messages: IMessage[]): FetchSuccess => ({ type: "fetch success", payload: messages });
+export const fetchError = (errorMessage: string): FetchError => ({ type: "fetch error", payload: errorMessage });
+export const addMessage = (message: IMessage): AddMessage => ({ type: "add message", payload: message });
+
+
 // Reducer
 export const initialState: IMessageState = {
   status: "ready",
