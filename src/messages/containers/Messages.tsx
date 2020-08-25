@@ -9,7 +9,7 @@ import {
 } from "../reducer/messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
-import { StatusForm } from "../components/MessageInput";
+import { MessageForm } from "../components/MessageForm";
 
 export function Messages() {
   const [state, dispatch] = useReducer(messageReducer, initialState);
@@ -42,7 +42,7 @@ export function Messages() {
       </p>
       <h1 className="text-4xl text-orange-600">Messages</h1>
       <div className="m-2 max-w-md">
-        <StatusForm submit={submitMessage} />
+        <MessageForm submit={submitMessage} />
       </div>
       {status === "fetching" && <p>Please wait...</p>}
       {status === "ready" &&

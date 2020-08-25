@@ -4,7 +4,7 @@ import { Visibility } from "../reducer/messageReducer";
 type Props = {
   submit: Function;
 };
-export function StatusForm(props: Props) {
+export function MessageForm(props: Props) {
   const [message, setMessage] = useState("");
   const [visibility, setVisibility] = useState<Visibility>("public");
 

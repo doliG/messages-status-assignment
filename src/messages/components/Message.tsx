@@ -1,8 +1,8 @@
 import React from "react";
-import { IMessage } from "../reducer/messageReducer";
+import { StatusMessage } from "../reducer/messageReducer";
 
 interface Props {
-  message: IMessage;
+  message: StatusMessage;
 }
 export function Message(props: Props) {
   const { message } = props;
