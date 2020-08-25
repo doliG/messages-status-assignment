@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Visibility } from "../reducer/messageReducer";
 
 type Props = {
   submit: Function;
 };
-export function MessageInput(props: Props) {
+export function StatusForm(props: Props) {
   const [message, setMessage] = useState("");
-  const [visibility, setVisibility]: [Visibility, Function] = useState(
-    "public"
-  );
+  const [visibility, setVisibility] = useState<Visibility>("public");
 
-  const onSubmit = () => {
+  const onSubmit = (event: React.FormEvent | React.KeyboardEvent) => {
+    event.preventDefault();
     if (!message.trim()) {
       return;
     }
-
     props.submit(message, visibility);
     setMessage("");
   };
 
+  const onMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => setMessage(event.target.value);
+  const onVisibilityChange = (event: React.ChangeEvent<HTMLSelectElement>) => setVisibility(event.target.value as Visibility);
+  const onKeyDown = (event: React.KeyboardEvent) => (event.keyCode === 13 && event.metaKey) && onSubmit(event);
+
   return (
-    <div className="bg-white shadow p-6 pb-3 rounded">
+    <form onSubmit={onSubmit} className="bg-white shadow p-6 pb-3 rounded">
       <textarea
         className="min-w-full focus:outline-none"
         placeholder={"Your status message..."}
         value={message}
-        onChange={(event) => setMessage(event.target.value)}
+        onChange={onMessageChange}
+        onKeyDown={onKeyDown}
       ></textarea>
       <div className="flex justify-end">
         <div className="relative mr-1">
@@ -33,7 +36,7 @@ export function MessageInput(props: Props) {
             className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-state"
             value={visibility}
-            onChange={(event) => setVisibility(event.target.value)}
+            onChange={onVisibilityChange}
           >
             {/* eslint-disable jsx-a11y/accessible-emoji */}
             <option value="public">🌍 Public</option>
@@ -52,11 +55,12 @@ export function MessageInput(props: Props) {
         </div>
         <button
           className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-3 rounded"
+          type="submit"
           onClick={onSubmit}
         >
           Post
         </button>
       </div>
-    </div>
+    </form>
   );
 }

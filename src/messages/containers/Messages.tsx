@@ -6,7 +6,7 @@ import {
 } from "../reducer/messageReducer";
 import { Message } from "../components/Message";
 import { mockMessages, mockMessage } from "../../datas";
-import { MessageInput } from "../components/MessageInput";
+import { StatusForm } from "../components/MessageInput";
 
 export function Messages() {
   const [state, dispatch] = useReducer(messageReducer, initialState);
@@ -22,9 +22,10 @@ export function Messages() {
   }, []);
 
   const addMessage = (text: string, visibility: Visibility) => {
+    const id = Math.floor(Math.random() * 100000);
     dispatch({
       type: "add message",
-      payload: { ...mockMessage, text, visibility },
+      payload: { ...mockMessage, id, text, visibility },
     });
   };
 
@@ -41,7 +42,7 @@ export function Messages() {
       </p>
       <h1 className="text-4xl text-orange-600">Messages</h1>
       <div className="m-2 max-w-md">
-        <MessageInput submit={addMessage} />
+        <StatusForm submit={addMessage} />
       </div>
       {status === "fetching" && <p>Please wait...</p>}
       {status === "ready" &&
